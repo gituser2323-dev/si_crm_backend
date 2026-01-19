@@ -22,7 +22,7 @@ app.use(cors({
     credentials:true
 }))
 
-app.get('/',(req,res)=>{
+app.get('/api',(req,res)=>{
     res.status(200).json({
         message:"Server Is up...",
         success:true

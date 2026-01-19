@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-app.options("*", cors({ origin: true, credentials: true }));
+// app.options("*", cors({ origin: true, credentials: true }));
 
 
 app.get('/api',(req,res)=>{

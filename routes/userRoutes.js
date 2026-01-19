@@ -324,7 +324,7 @@ router.post('/additionalInfo',async(req,res)=>{
             passoutYear:passoutYear,
             city:city,
             interestedCourse:interestedCourse,
-            additionalInfo:enquireId,
+            enquireId:enquireId,
 
         })
 

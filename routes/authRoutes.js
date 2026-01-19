@@ -9,12 +9,12 @@ const verifyToken=require('../middlewares/verifyToken')
 const authorizedRole=require('../middlewares/authorizedRoles')
 
 
-router.get('/',(req,res)=>{
-    res.status(200).json({
-        message:"API is working",
-        success:true
-    })
-})
+// router.get('/',(req,res)=>{
+//     res.status(200).json({
+//         message:"API is working",
+//         success:true
+//     })
+// })
 
 
 router.post('/login',async(req,res)=>{

@@ -6,13 +6,13 @@ app.use(express.static('public/'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
-const userRoutes=require('./routes/userRoutes')
-const authRoutes=require('./routes/authRoutes')
+const userRoutes=require('../routes/userRoutes')
+const authRoutes=require('../routes/authRoutes')
 
 const dotenv=require('dotenv')
 dotenv.config()
 
-const connection=require('./config/db')
+const connection=require('../config/db')
 connection()
 
 

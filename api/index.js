@@ -15,13 +15,29 @@ dotenv.config()
 const connection=require('../config/db')
 connection()
 
+const cors = require("cors");
 
-const cors=require('cors')
-app.use(cors({
-    // origin:"http://localhost:5173",
-    origin:"https://si-crm-ebon.vercel.app",
-    credentials:true
-}))
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "https://si-crm-ebon.vercel.app",
+  "https://YOUR-GODADDY-DOMAIN.com",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // ✅ allow Postman
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
+
+// ✅ Preflight
+app.options("*", cors());
+
 
 app.get('/api',(req,res)=>{
     res.status(200).json({

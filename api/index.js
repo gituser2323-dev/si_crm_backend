@@ -21,7 +21,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
   "https://si-crm-ebon.vercel.app",
-  "https://YOUR-GODADDY-DOMAIN.com",
+  "https://www.speedupinfotech.com",
 ];
 
 app.use(

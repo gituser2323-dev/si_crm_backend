@@ -199,7 +199,7 @@ router.delete('/enquiry/:id',verifyToken,authorizedRole("admin"),async(req,res)=
      await additionalInfo.deleteMany({ enquireId: id });
 
         return res.status(200).json({
-            message:"Eqnuiry Deleted Successfully with Additional info",
+            message:"Enquiry Deleted Successfully",
             success:true,
 
         })

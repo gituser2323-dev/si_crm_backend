@@ -1,3 +1,7 @@
+const userSchema=require('../model/userSchema')
+const enquirySchema=require('../model/enquirySchema')
+const additionalInfo=require('../model/additionalInfoschema')
+const bcrypt=require('bcryptjs')
 const createAdmin=async(req,res)=>{
     try{
 

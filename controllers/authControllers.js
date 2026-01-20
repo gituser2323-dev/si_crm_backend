@@ -1,3 +1,9 @@
+
+const userSchema=require('../model/userSchema')
+const enquirySchema=require('../model/enquirySchema')
+const additionalInfo=require('../model/additionalInfoschema')
+const bcrypt=require('bcryptjs')
+
 const login=async(req,res)=>{
     try{
         const{email,password}=req.body

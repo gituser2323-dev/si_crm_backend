@@ -126,7 +126,7 @@ const getEnquiries=async(req,res)=>{
     
 }
 
-const additionalInfo=async(req,res)=>{
+const getAdditionalInfo=async(req,res)=>{
 
     try{
 
@@ -219,4 +219,4 @@ const getAdditionalInfoByEnquiryId=async (req, res) => {
     }
   }
 
-  module.exports={dashboard,postEnquiry,deleteEnquire,getEnquiries,additionalInfo,getAdditionalInfoByEnquiryId}
+  module.exports={dashboard,postEnquiry,deleteEnquire,getEnquiries,getAdditionalInfo,getAdditionalInfoByEnquiryId}

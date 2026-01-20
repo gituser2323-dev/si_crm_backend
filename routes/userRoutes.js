@@ -10,7 +10,7 @@ const verifyToken=require('../middlewares/verifyToken')
 const authorizedRole=require('../middlewares/authorizedRoles')
 
 const { createAdmin ,getUsers,getProfile} =require("../controllers/adminControllers");
-const {dashboard,postEnquiry,deleteEnquire,getEnquiries, additionalInfo,getAdditionalInfoByEnquiryId} =require('../controllers/enquireControllers')
+const {dashboard,postEnquiry,deleteEnquire,getEnquiries,getAdditionalInfo,getAdditionalInfoByEnquiryId} =require('../controllers/enquireControllers')
 
 
 
@@ -39,7 +39,7 @@ router.get('/enquiry',verifyToken,authorizedRole("admin"),getEnquiries)
 
 //aditionalSchema
 
-router.post('/additionalInfo', additionalInfo)
+router.post('/additionalInfo',getAdditionalInfo)
 
 
 router.get(

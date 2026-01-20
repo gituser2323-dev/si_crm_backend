@@ -1,4 +1,4 @@
-export const dashboard=(req,res)=>{
+const dashboard=(req,res)=>{
     try{
         return res.status(200).json({
             message:"Welcome To Dashboard",
@@ -16,7 +16,8 @@ export const dashboard=(req,res)=>{
     }
 }
 
-export const postEnquiry=async(req,res)=>{
+
+const postEnquiry=async(req,res)=>{
     try{
 
         const{name,email,phone,course}=req.body
@@ -56,7 +57,7 @@ export const postEnquiry=async(req,res)=>{
     }
 }
 
-export const deleteEnquire=async(req,res)=>{
+ const deleteEnquire=async(req,res)=>{
 
     try{
         const id=req.params.id;
@@ -93,7 +94,7 @@ export const deleteEnquire=async(req,res)=>{
 
 }
 
-export const getEnquiries=async(req,res)=>{
+const getEnquiries=async(req,res)=>{
 
     try{
         const response=await enquirySchema.find().sort({ createdAt: -1 }); // latest first
@@ -125,7 +126,7 @@ export const getEnquiries=async(req,res)=>{
     
 }
 
-export const additionalInfo=async(req,res)=>{
+const additionalInfo=async(req,res)=>{
 
     try{
 
@@ -189,7 +190,7 @@ export const additionalInfo=async(req,res)=>{
 
 }
 
-export const getAdditionalInfoByEnquiryId=async (req, res) => {
+const getAdditionalInfoByEnquiryId=async (req, res) => {
     try {
       const { enquiryId } = req.params;
 
@@ -217,3 +218,5 @@ export const getAdditionalInfoByEnquiryId=async (req, res) => {
       });
     }
   }
+
+  module.exports={dashboard,postEnquiry,deleteEnquire,getEnquiries,additionalInfo,getAdditionalInfoByEnquiryId}

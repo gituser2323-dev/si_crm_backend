@@ -29,7 +29,6 @@ router.post('/enquiry',postEnquiry)
 
 
 
-
 // delete enquiry
 router.delete('/enquiry/:id',verifyToken,authorizedRole("admin"),deleteEnquire)
 

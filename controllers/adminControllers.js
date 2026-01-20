@@ -1,4 +1,4 @@
-export const createAdmin=async(req,res)=>{
+const createAdmin=async(req,res)=>{
     try{
 
         const{name,email,password}=req.body
@@ -15,7 +15,7 @@ export const createAdmin=async(req,res)=>{
             })
         }
 
-        const response=userSchema.create({
+        const response=await userSchema.create({
             name:name,
             email:email,
             password:hashpassword,
@@ -43,7 +43,7 @@ export const createAdmin=async(req,res)=>{
 }
 
 
-export const getUsers=async(req,res)=>{
+ const getUsers=async(req,res)=>{
     try{
 
         const response=await userSchema.find()
@@ -65,7 +65,7 @@ export const getUsers=async(req,res)=>{
     }
 }
 
-export const getProfile=async(req,res)=>{
+ const getProfile=async(req,res)=>{
     try{
         // id comes from JWT
         const id=req.user.id
@@ -97,3 +97,5 @@ export const getProfile=async(req,res)=>{
 
     }
 }
+
+module.exports={createAdmin,getUsers,getProfile}

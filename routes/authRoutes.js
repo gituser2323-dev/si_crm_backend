@@ -18,7 +18,7 @@ const {login} =require('../controllers/authControllers')
 // })
 
 
-router.post('/login',)
+router.post('/login',login)
 
 
 

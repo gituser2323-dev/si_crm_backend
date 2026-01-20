@@ -352,28 +352,50 @@ router.post('/additionalInfo',async(req,res)=>{
 })
 
 
-router.get('/additionalInfo/:id',verifyToken,authorizedRole("admin"),async(req,res)=>{
-    try{
+const mongoose = require("mongoose");
 
-        const id=req.params.id
-        // const result=await additionalInfo.findById(id).sort({createdAt:-1}).populate('enquireId')
-        const result=await additionalInfo.findById(id).populate('enquireId')
+router.get(
+  "/additionalInfo/:id",
+  verifyToken,
+  authorizedRole("admin"),
+  async (req, res) => {
+    try {
+      const { id } = req.params;
 
+      // ✅ validate Mongo ObjectId
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid ID",
+        });
+      }
 
-        return res.status(200).json({
-            message:"Detailed Information fetched Successfully",
-            success:true,
-            data:result
-        })
+      const result = await additionalInfo
+        .findById(id)
+        .populate("enquireId");
 
-    }catch(err)
-    {
-     res.status(500).json({
-      success: false,
-      message: "Server error",
-      err:err.message
-    });
+      // ✅ handle not found
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: "Additional Info not found",
+        });
+      }
+
+      return res.status(200).json({
+        message: "Detailed Information fetched Successfully",
+        success: true,
+        data: result,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Server error",
+        err: err.message,
+      });
     }
-})
+  }
+);
+
 
 module.exports=router

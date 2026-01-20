@@ -3,6 +3,8 @@ const userSchema=require('../model/userSchema')
 const enquirySchema=require('../model/enquirySchema')
 const additionalInfo=require('../model/additionalInfoschema')
 const bcrypt=require('bcryptjs')
+const jwt=require('jsonwebtoken')
+
 
 const login=async(req,res)=>{
     try{

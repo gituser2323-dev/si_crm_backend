@@ -352,10 +352,11 @@ router.post('/additionalInfo',async(req,res)=>{
 })
 
 
-router.get('/additionalInfo',verifyToken,authorizedRole("admin"),async(req,res)=>{
+router.get('/additionalInfo/:id',verifyToken,authorizedRole("admin"),async(req,res)=>{
     try{
 
-        const result=await additionalInfo.find().sort({createdAt:-1}).populate('enquireId')
+        const id=req.params.id
+        const result=await additionalInfo.findById(id).sort({createdAt:-1}).populate('enquireId')
 
         return res.status(200).json({
             message:"Detailed Information fetched Successfully",

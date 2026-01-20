@@ -356,7 +356,9 @@ router.get('/additionalInfo/:id',verifyToken,authorizedRole("admin"),async(req,r
     try{
 
         const id=req.params.id
-        const result=await additionalInfo.findById(id).sort({createdAt:-1}).populate('enquireId')
+        // const result=await additionalInfo.findById(id).sort({createdAt:-1}).populate('enquireId')
+        const result=await additionalInfo.findById(id).populate('enquireId')
+
 
         return res.status(200).json({
             message:"Detailed Information fetched Successfully",

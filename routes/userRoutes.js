@@ -352,39 +352,28 @@ router.post('/additionalInfo',async(req,res)=>{
 })
 
 
-const mongoose = require("mongoose");
-
 router.get(
-  "/additionalInfo/:id",
+  "/additionalInfo/:enquiryId",
   verifyToken,
   authorizedRole("admin"),
   async (req, res) => {
     try {
-      const { id } = req.params;
-
-      // ✅ validate Mongo ObjectId
-      if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid ID",
-        });
-      }
+      const { enquiryId } = req.params;
 
       const result = await additionalInfo
-        .findById(id)
+        .findOne({ enquireId: enquiryId })
         .populate("enquireId");
 
-      // ✅ handle not found
       if (!result) {
         return res.status(404).json({
           success: false,
-          message: "Additional Info not found",
+          message: "Additional Info not found for this enquiry",
         });
       }
 
       return res.status(200).json({
-        message: "Detailed Information fetched Successfully",
         success: true,
+        message: "Additional Info fetched successfully",
         data: result,
       });
     } catch (err) {
